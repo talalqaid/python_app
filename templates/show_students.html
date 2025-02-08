@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Show Students</title>
+</head>
+<body>
+    <h1 align="center">Show Student</h1>
+    <form method="POST">
+        <label>Major:</label>
+        <input type="text" name="major" required><br>
+        <button type="submit">Show</button>
+    </form>
+    {% if students %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Major</th>
+        </tr>
+    
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.major }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="btn">Back</a>
+</body>
+</html>
